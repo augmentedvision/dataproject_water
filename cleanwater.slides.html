@@ -14765,28 +14765,10 @@ From the chart, Groundwater makes up the largest portion of the remaining freshw
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[36]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[38]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"water_distribution.csv"</span><span class="p">)</span>
-<span class="c1"># Categorize specific water sources as non-freshwater</span>
-<span class="n">non_freshwater_sources</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Oceans, Seas, &amp; Bays'</span><span class="p">,</span> <span class="s1">'Groundwater|Saline'</span><span class="p">,</span> <span class="s1">'Lakes|Saline'</span><span class="p">]</span>
-<span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">'water_source'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">non_freshwater_sources</span><span class="p">),</span> <span class="s1">'is_fresh'</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
-
-<span class="c1"># Data for the pie chart</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Non-Freshwater'</span><span class="p">,</span> <span class="s1">'Freshwater'</span><span class="p">]</span>
-<span class="c1"># Calculate freshwater and non-freshwater percentages based on the data</span>
-<span class="n">freshwater_data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">'is_fresh'</span><span class="p">]]</span>
-<span class="n">freshwater_percentage</span> <span class="o">=</span> <span class="n">freshwater_data</span><span class="p">[</span><span class="s1">'pct_of_total_water'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">non_freshwater_percentage</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">-</span> <span class="n">freshwater_percentage</span>
-<span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">non_freshwater_percentage</span><span class="p">,</span> <span class="n">freshwater_percentage</span><span class="p">]</span>
-<span class="c1"># Custom color palette for the pie chart with darker colours</span>
-<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'#C23B22'</span><span class="p">,</span> <span class="s1">'#1F78B4'</span><span class="p">,</span> <span class="s1">'#33A02C'</span><span class="p">,</span> <span class="s1">'#6A3D9A'</span><span class="p">,</span> <span class="s1">'#FF7F00'</span><span class="p">,</span>
-          <span class="s1">'#B15928'</span><span class="p">,</span> <span class="s1">'#FB9A99'</span><span class="p">,</span> <span class="s1">'#E31A1C'</span><span class="p">,</span> <span class="s1">'#FDBF6F'</span><span class="p">]</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="c1"># Water Distribution Chart</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">[:</span><span class="mi">2</span><span class="p">],</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">'</span><span class="si">%1.1f%%</span><span class="s1">'</span><span class="p">,</span>
